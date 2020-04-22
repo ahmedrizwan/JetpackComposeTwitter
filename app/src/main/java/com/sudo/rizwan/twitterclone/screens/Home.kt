@@ -6,18 +6,21 @@ import androidx.ui.core.Alignment
 import androidx.ui.core.ContentScale
 import androidx.ui.core.Modifier
 import androidx.ui.core.clip
+import androidx.ui.foundation.AdapterList
 import androidx.ui.foundation.Clickable
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
+import androidx.ui.graphics.Color
 import androidx.ui.layout.*
-import androidx.ui.material.DrawerState
-import androidx.ui.material.Scaffold
-import androidx.ui.material.ScaffoldState
+import androidx.ui.material.*
 import androidx.ui.res.imageResource
 import androidx.ui.unit.dp
 import com.sudo.rizwan.twitterclone.R
+import com.sudo.rizwan.twitterclone.state.AppState
+import com.sudo.rizwan.twitterclone.tweets
 import com.sudo.rizwan.twitterclone.widgets.CustomDivider
+import com.sudo.rizwan.twitterclone.widgets.TweetLayout
 
 @Composable
 fun Home(scaffoldState: ScaffoldState = remember { ScaffoldState() }) {
@@ -30,6 +33,56 @@ fun Home(scaffoldState: ScaffoldState = remember { ScaffoldState() }) {
             Column {
                 TopBar(scaffoldState = scaffoldState)
                 CustomDivider()
+                AdapterList(data = tweets) { tweet ->
+                    TweetLayout(tweet)
+                    CustomDivider()
+                }
+            }
+        },
+        floatingActionButton = {
+            FloatingActionButton(onClick = {}, backgroundColor = AppState.theme.primary) {
+                Image(
+                    imageResource(R.drawable.trends_icon),
+                    modifier = Modifier
+                        .preferredSize(25.dp)
+                )
+            }
+        },
+        bottomAppBar = {
+            BottomAppBar(backgroundColor = Color.White) {
+                Row(
+                    modifier = Modifier.weight(1f),
+                    horizontalArrangement = Arrangement.SpaceAround
+                ) {
+                    IconButton(onClick = {}) {
+                        Image(
+                            imageResource(R.drawable.trends_icon),
+                            modifier = Modifier
+                                .preferredSize(25.dp)
+                        )
+                    }
+                    IconButton(onClick = {}) {
+                        Image(
+                            imageResource(R.drawable.trends_icon),
+                            modifier = Modifier
+                                .preferredSize(25.dp)
+                        )
+                    }
+                    IconButton(onClick = {}) {
+                        Image(
+                            imageResource(R.drawable.trends_icon),
+                            modifier = Modifier
+                                .preferredSize(25.dp)
+                        )
+                    }
+                    IconButton(onClick = {}) {
+                        Image(
+                            imageResource(R.drawable.trends_icon),
+                            modifier = Modifier
+                                .preferredSize(25.dp)
+                        )
+                    }
+                }
             }
         }
     )
