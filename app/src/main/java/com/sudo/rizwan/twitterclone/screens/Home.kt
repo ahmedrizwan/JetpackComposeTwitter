@@ -6,10 +6,10 @@ import androidx.ui.core.Alignment
 import androidx.ui.core.ContentScale
 import androidx.ui.core.Modifier
 import androidx.ui.core.clip
-import androidx.ui.foundation.AdapterList
 import androidx.ui.foundation.Clickable
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.VerticalScroller
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
@@ -30,19 +30,22 @@ fun Home(scaffoldState: ScaffoldState = remember { ScaffoldState() }) {
             AppDrawer()
         },
         bodyContent = { modifier ->
-            Column {
+            Column(modifier = Modifier.padding(bottom = 54.dp)) {
                 TopBar(scaffoldState = scaffoldState)
-                CustomDivider()
-                AdapterList(data = tweets) { tweet ->
-                    TweetLayout(tweet)
-                    CustomDivider()
+                VerticalScroller {
+                    Column {
+                        tweets.forEach { tweet ->
+                            TweetLayout(tweet)
+                            CustomDivider()
+                        }
+                    }
                 }
             }
         },
         floatingActionButton = {
             FloatingActionButton(onClick = {}, backgroundColor = AppState.theme.primary) {
                 Image(
-                    imageResource(R.drawable.trends_icon),
+                    imageResource(R.drawable.ic_compose),
                     modifier = Modifier
                         .preferredSize(25.dp)
                 )
@@ -56,30 +59,30 @@ fun Home(scaffoldState: ScaffoldState = remember { ScaffoldState() }) {
                 ) {
                     IconButton(onClick = {}) {
                         Image(
-                            imageResource(R.drawable.trends_icon),
+                            imageResource(R.drawable.ic_home),
                             modifier = Modifier
-                                .preferredSize(25.dp)
+                                .preferredSize(24.dp)
                         )
                     }
                     IconButton(onClick = {}) {
                         Image(
-                            imageResource(R.drawable.trends_icon),
+                            imageResource(R.drawable.ic_search),
                             modifier = Modifier
-                                .preferredSize(25.dp)
+                                .preferredSize(24.dp)
                         )
                     }
                     IconButton(onClick = {}) {
                         Image(
-                            imageResource(R.drawable.trends_icon),
+                            imageResource(R.drawable.ic_notifications),
                             modifier = Modifier
-                                .preferredSize(25.dp)
+                                .preferredSize(24.dp)
                         )
                     }
                     IconButton(onClick = {}) {
                         Image(
-                            imageResource(R.drawable.trends_icon),
+                            imageResource(R.drawable.ic_dm),
                             modifier = Modifier
-                                .preferredSize(25.dp)
+                                .preferredSize(24.dp)
                         )
                     }
                 }
@@ -98,35 +101,35 @@ fun AppDrawer() {
 
 @Composable
 fun TopBar(scaffoldState: ScaffoldState) {
-    Row(
-        modifier = Modifier.preferredHeight(50.dp) +
-                Modifier.padding(start = 16.dp, end = 16.dp) +
-                Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalGravity = Alignment.CenterVertically
-    ) {
-        Clickable(onClick = {
-            scaffoldState.drawerState = DrawerState.Opened
-        }) {
+    Surface(elevation = 2.dp) {
+        Row(
+            modifier = Modifier.preferredHeight(50.dp)
+                    + Modifier.padding(start = 16.dp, end = 16.dp)
+                    + Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalGravity = Alignment.CenterVertically
+        ) {
+            Clickable(onClick = {
+                scaffoldState.drawerState = DrawerState.Opened
+            }) {
+                Image(
+                    imageResource(R.drawable.profile_image),
+                    modifier = Modifier
+                        .preferredSize(34.dp)
+                        .clip(shape = RoundedCornerShape(17.dp)),
+                    contentScale = ContentScale.Crop
+                )
+            }
             Image(
-                imageResource(R.drawable.profile_image),
+                imageResource(R.drawable.ic_twitter),
                 modifier = Modifier
-                    .preferredSize(30.dp)
-                    .clip(shape = RoundedCornerShape(15.dp)),
-                contentScale = ContentScale.Crop
+                    .preferredSize(22.dp)
+            )
+            Image(
+                imageResource(R.drawable.ic_trends),
+                modifier = Modifier
+                    .preferredSize(24.dp)
             )
         }
-
-        Image(
-            imageResource(R.drawable.twitter_icon),
-            modifier = Modifier
-                .preferredSize(25.dp)
-        )
-
-        Image(
-            imageResource(R.drawable.trends_icon),
-            modifier = Modifier
-                .preferredSize(25.dp)
-        )
     }
 }

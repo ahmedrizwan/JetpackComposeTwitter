@@ -600,8 +600,7 @@ class HomeScreenState extends State<HomeScreen> {
                       title: Text('')),
                   BottomNavigationBarItem(
                       icon: Image.network(
-                        'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot.com/o/twtr%2Fsearch'
-                            '.png?alt=media',
+                        'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot.com/o/twtr%2Fsearch.png?alt=media',
                         width: 24,
                       ),
                       activeIcon: Image.network(
@@ -623,8 +622,7 @@ class HomeScreenState extends State<HomeScreen> {
                       title: Text('')),
                   BottomNavigationBarItem(
                       icon: Image.network(
-                        'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot.com/o/twtr%2Fdm'
-                            '.png?alt=media',
+                        'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot.com/o/twtr%2Fdm.png?alt=media',
                         width: 24,
                       ),
                       activeIcon: Image.network(
@@ -1224,8 +1222,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Image.network(
-                                  'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot'
-                                      '.com/o/twtr%2F${twt.retwted ? 'retwt_selected' : 'retwt'}.png?alt=media',
+                                  'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot.com/o/twtr%2F${twt.retwted ? 'retwt_selected' : 'retwt'}.png?alt=media',
                                   width: 15,
                                 ),
                                 SizedBox(width: 8),
@@ -1251,8 +1248,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Image.network(
-                                  'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot'
-                                      '.com/o/twtr%2F${twt.liked ? 'liked' : 'like'}.png?alt=media',
+                                  'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot.com/o/twtr%2F${twt.liked ? 'liked' : 'like'}.png?alt=media',
                                   width: 15,
                                 ),
                                 SizedBox(width: 8),
@@ -1261,8 +1257,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           Image.network(
-                            'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot'
-                                '.com/o/twtr%2Fshare.png?alt=media',
+                            'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot.com/o/twtr%2Fshare.png?alt=media',
                             width: 15,
                           ),
                           SizedBox()
