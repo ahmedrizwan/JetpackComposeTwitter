@@ -36,7 +36,7 @@ val tweets = listOf(
         age java" when you type "flutter create".\n\nElectric light bulbBy default new projects use Kotlin and 
         Swift. 
         """.trimIndent(),
-        -1,
+        null,
         15,
         false,
         38,
@@ -47,7 +47,7 @@ val tweets = listOf(
     Tweet(
         sudorizwan,
         "This is a test twt to see how all this works, yay!",
-        R.drawable.profile_image,
+        R.drawable.tweet_image,
         495,
         false,
         193,
@@ -63,7 +63,7 @@ val tweets = listOf(
         age java" when you type "flutter create".\n\nElectric light bulbBy default new projects use Kotlin and 
         Swift. 
         """.trimIndent(),
-        -1,
+        null,
         15,
         false,
         38,
@@ -74,7 +74,7 @@ val tweets = listOf(
     Tweet(
         sudorizwan,
         "This is a test twt to see how all this works, yay!",
-        R.drawable.profile_image,
+        null,
         495,
         false,
         193,
@@ -90,7 +90,7 @@ val tweets = listOf(
         age java" when you type "flutter create".\n\nElectric light bulbBy default new projects use Kotlin and 
         Swift. 
         """.trimIndent(),
-        -1,
+        null,
         15,
         false,
         38,
@@ -101,7 +101,7 @@ val tweets = listOf(
     Tweet(
         sudorizwan,
         "This is a test twt to see how all this works, yay!",
-        R.drawable.profile_image,
+        null,
         495,
         false,
         193,
