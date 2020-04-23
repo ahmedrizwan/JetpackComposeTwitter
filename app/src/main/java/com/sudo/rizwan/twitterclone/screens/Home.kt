@@ -15,9 +15,14 @@ import androidx.ui.graphics.Color
 import androidx.ui.layout.*
 import androidx.ui.material.*
 import androidx.ui.res.imageResource
+import androidx.ui.text.TextStyle
+import androidx.ui.text.font.FontWeight
 import androidx.ui.unit.dp
+import androidx.ui.unit.sp
 import com.sudo.rizwan.twitterclone.R
+import com.sudo.rizwan.twitterclone.darkThemeColors
 import com.sudo.rizwan.twitterclone.state.AppState
+import com.sudo.rizwan.twitterclone.sudorizwan
 import com.sudo.rizwan.twitterclone.tweets
 import com.sudo.rizwan.twitterclone.widgets.CustomDivider
 import com.sudo.rizwan.twitterclone.widgets.TweetLayout
@@ -57,34 +62,10 @@ fun Home(scaffoldState: ScaffoldState = remember { ScaffoldState() }) {
                     modifier = Modifier.weight(1f),
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
-                    IconButton(onClick = {}) {
-                        Image(
-                            imageResource(R.drawable.ic_home),
-                            modifier = Modifier
-                                .preferredSize(24.dp)
-                        )
-                    }
-                    IconButton(onClick = {}) {
-                        Image(
-                            imageResource(R.drawable.ic_search),
-                            modifier = Modifier
-                                .preferredSize(24.dp)
-                        )
-                    }
-                    IconButton(onClick = {}) {
-                        Image(
-                            imageResource(R.drawable.ic_notifications),
-                            modifier = Modifier
-                                .preferredSize(24.dp)
-                        )
-                    }
-                    IconButton(onClick = {}) {
-                        Image(
-                            imageResource(R.drawable.ic_dm),
-                            modifier = Modifier
-                                .preferredSize(24.dp)
-                        )
-                    }
+                    BottomBarIcon(R.drawable.ic_home)
+                    BottomBarIcon(R.drawable.ic_search)
+                    BottomBarIcon(R.drawable.ic_notifications)
+                    BottomBarIcon(R.drawable.ic_dm)
                 }
             }
         }
@@ -92,10 +73,99 @@ fun Home(scaffoldState: ScaffoldState = remember { ScaffoldState() }) {
 }
 
 @Composable
+private fun BottomBarIcon(icon: Int) {
+    IconButton(onClick = {}) {
+        Image(
+            imageResource(icon),
+            modifier = Modifier.preferredSize(24.dp)
+        )
+    }
+}
+
+@Composable
 fun AppDrawer() {
-    Column(modifier = Modifier.fillMaxSize()) {
-        Spacer(Modifier.preferredHeight(24.dp))
-        Text(text = "Drawer")
+    Column {
+        Column(modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp)) {
+            Image(
+                imageResource(R.drawable.profile_image),
+                modifier = Modifier
+                    .preferredSize(50.dp)
+                    .clip(shape = RoundedCornerShape(25.dp)),
+                contentScale = ContentScale.Crop
+            )
+            Spacer(modifier = Modifier.preferredHeight(2.dp))
+            Text(
+                text = sudorizwan.name,
+                style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 18.sp)
+            )
+            Text(text = "@${sudorizwan.username}", color = Color(0xFF666666))
+            Spacer(modifier = Modifier.preferredHeight(8.dp))
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalGravity = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "${sudorizwan.following} ",
+                    style = TextStyle(fontWeight = FontWeight.Bold)
+                )
+                Text(text = "Following")
+                Spacer(modifier = Modifier.preferredWidth(24.dp))
+                Text(
+                    text = "${sudorizwan.followers} ",
+                    style = TextStyle(fontWeight = FontWeight.Bold)
+                )
+                Text(text = "Followers")
+            }
+            Spacer(modifier = Modifier.preferredHeight(16.dp))
+        }
+        CustomDivider()
+        Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
+            SideBarListItem(text = "Lists", icon = R.drawable.ic_lists)
+            SideBarListItem(text = "Topics", icon = R.drawable.ic_topics)
+            SideBarListItem(text = "Bookmarks", icon = R.drawable.ic_bookmarks)
+            SideBarListItem(text = "Moments", icon = R.drawable.ic_moments)
+        }
+        CustomDivider()
+        Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = "Settings and privacy", style = TextStyle(fontSize = 18.sp))
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = "Help Center", style = TextStyle(fontSize = 18.sp))
+        }
+        Spacer(modifier = Modifier.weight(weight = 1f))
+        CustomDivider()
+        Row(
+            modifier = Modifier.fillMaxWidth()
+                .padding(start = 16.dp, end = 16.dp)
+                .preferredHeight(40.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalGravity = Alignment.CenterVertically
+        ) {
+            Clickable(onClick = {
+                AppState.theme = darkThemeColors
+            }) {
+                Image(
+                    imageResource(R.drawable.ic_theme),
+                    modifier = Modifier.preferredSize(30.dp)
+                )
+            }
+            Image(
+                imageResource(R.drawable.ic_qrcode),
+                modifier = Modifier.preferredSize(30.dp)
+            )
+        }
+    }
+}
+
+@Composable
+fun SideBarListItem(text: String, icon: Int) {
+    Row(modifier = Modifier.preferredHeight(50.dp), verticalGravity = Alignment.CenterVertically) {
+        Image(
+            imageResource(icon),
+            modifier = Modifier.preferredSize(40.dp)
+        )
+        Spacer(modifier = Modifier.preferredWidth(16.dp))
+        Text(text = text, style = TextStyle(fontSize = 18.sp))
     }
 }
 

@@ -445,8 +445,7 @@ class HomeScreenState extends State<HomeScreen> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Image.network(
-                            'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot'
-                                '.com/o/twtr%2Flists.png?alt=media',
+                            'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot.com/o/twtr%2Flists.png?alt=media',
                             width: 25),
                         SizedBox(width: 14),
                         Text('Lists', style: TextStyle(fontSize: 18)),
@@ -460,8 +459,7 @@ class HomeScreenState extends State<HomeScreen> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Image.network(
-                            'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot'
-                                '.com/o/twtr%2Ftopics.png?alt=media',
+                            'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot.com/o/twtr%2Ftopics.png?alt=media',
                             width: 25),
                         SizedBox(width: 14),
                         Text('Topics', style: TextStyle(fontSize: 18)),
@@ -475,8 +473,7 @@ class HomeScreenState extends State<HomeScreen> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Image.network(
-                            'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot'
-                                '.com/o/twtr%2Fbookmarks.png?alt=media',
+                            'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot.com/o/twtr%2Fbookmarks.png?alt=media',
                             width: 25),
                         SizedBox(width: 14),
                         Text('Bookmarks', style: TextStyle(fontSize: 18)),
@@ -490,8 +487,7 @@ class HomeScreenState extends State<HomeScreen> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Image.network(
-                            'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot'
-                                '.com/o/twtr%2Fmoments.png?alt=media',
+                            'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot.com/o/twtr%2Fmoments.png?alt=media',
                             width: 25),
                         SizedBox(width: 14),
                         Text('Moments', style: TextStyle(fontSize: 18)),
@@ -528,16 +524,14 @@ class HomeScreenState extends State<HomeScreen> {
                     _showThemes();
                   },
                   child: Image.network(
-                      'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot'
-                          '.com/o/twtr%2Ftheme.png?alt=media',
+                      'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot.com/o/twtr%2Ftheme.png?alt=media',
                       width: 22),
                 ),
                 Expanded(
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Image.network(
-                        'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot'
-                            '.com/o/twtr%2Fqrcode.png?alt=media',
+                        'https://firebasestorage.googleapis.com/v0/b/flutter-yeti.appspot.com/o/twtr%2Fqrcode.png?alt=media',
                         width: 22),
                   ),
                 ),
