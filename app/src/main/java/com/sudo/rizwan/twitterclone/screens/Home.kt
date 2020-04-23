@@ -21,6 +21,7 @@ import androidx.ui.unit.dp
 import androidx.ui.unit.sp
 import com.sudo.rizwan.twitterclone.R
 import com.sudo.rizwan.twitterclone.darkThemeColors
+import com.sudo.rizwan.twitterclone.models.User
 import com.sudo.rizwan.twitterclone.state.AppState
 import com.sudo.rizwan.twitterclone.sudorizwan
 import com.sudo.rizwan.twitterclone.tweets
@@ -94,28 +95,7 @@ fun AppDrawer() {
                 contentScale = ContentScale.Crop
             )
             Spacer(modifier = Modifier.preferredHeight(2.dp))
-            Text(
-                text = sudorizwan.name,
-                style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 18.sp)
-            )
-            Text(text = "@${sudorizwan.username}", color = Color(0xFF666666))
-            Spacer(modifier = Modifier.preferredHeight(8.dp))
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalGravity = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "${sudorizwan.following} ",
-                    style = TextStyle(fontWeight = FontWeight.Bold)
-                )
-                Text(text = "Following")
-                Spacer(modifier = Modifier.preferredWidth(24.dp))
-                Text(
-                    text = "${sudorizwan.followers} ",
-                    style = TextStyle(fontWeight = FontWeight.Bold)
-                )
-                Text(text = "Followers")
-            }
+            UserInfo(sudorizwan)
             Spacer(modifier = Modifier.preferredHeight(16.dp))
         }
         CustomDivider()
@@ -154,6 +134,36 @@ fun AppDrawer() {
                 modifier = Modifier.preferredSize(30.dp)
             )
         }
+    }
+}
+
+@Composable
+fun UserInfo(user: User, showBio: Boolean = false) {
+    Text(
+        text = user.name,
+        style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 18.sp)
+    )
+    Text(text = "@${user.username}", color = Color(0xFF666666))
+    if (showBio) {
+        Spacer(modifier = Modifier.preferredHeight(8.dp))
+        Text(text = user.bio, style = TextStyle(fontSize = 14.sp))
+    }
+    Spacer(modifier = Modifier.preferredHeight(8.dp))
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalGravity = Alignment.CenterVertically
+    ) {
+        Text(
+            text = "${user.following} ",
+            style = TextStyle(fontWeight = FontWeight.Bold)
+        )
+        Text(text = "Following", style = TextStyle(fontSize = 14.sp))
+        Spacer(modifier = Modifier.preferredWidth(24.dp))
+        Text(
+            text = "${user.followers} ",
+            style = TextStyle(fontWeight = FontWeight.Bold)
+        )
+        Text(text = "Followers", style = TextStyle(fontSize = 14.sp))
     }
 }
 

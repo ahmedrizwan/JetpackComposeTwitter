@@ -21,6 +21,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onBackPressed() {
+        if (AppState.currentScreen !is Screen.Home) {
+            // Temp handling of back navigation
+            AppState.currentScreen = Screen.Home
+            return
+        }
+        super.onBackPressed()
+    }
 }
 
 @Composable
@@ -29,7 +38,7 @@ fun AppContent() {
         Surface(color = MaterialTheme.colors.background) {
             when (screen) {
                 is Screen.Home -> Home()
-                is Screen.Profile -> Profile()
+                is Screen.Profile -> Profile(screen.user)
             }
         }
     }

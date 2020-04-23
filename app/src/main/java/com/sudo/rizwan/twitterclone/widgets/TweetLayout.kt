@@ -18,12 +18,14 @@ import androidx.ui.unit.dp
 import androidx.ui.unit.sp
 import com.sudo.rizwan.twitterclone.R
 import com.sudo.rizwan.twitterclone.models.Tweet
+import com.sudo.rizwan.twitterclone.state.Screen
+import com.sudo.rizwan.twitterclone.state.navigateTo
 
 @Composable
 fun TweetLayout(tweet: Tweet) {
     Row(modifier = Modifier.padding(all = 10.dp)) {
         Clickable(onClick = {
-            // TODO: Open profile
+            navigateTo(Screen.Profile(tweet.user))
         }) {
             Image(
                 imageResource(tweet.user.avatar),
