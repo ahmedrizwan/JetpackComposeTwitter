@@ -5,45 +5,18 @@ import com.sudo.rizwan.twitterclone.models.User
 
 // Users
 val sudorizwan = User(
-    "Ahmed Rizwan",
-    "sudo_rizwan",
-    R.drawable.profile_image,
-    "https://pbs.twimg.com/profile_banners/968284418/1578616922/1500x500",
-    "Android Engineer @Snappymob",
-    248,
-    343,
-    false
-)
-
-val flutterDev = User(
-    "Flutter",
-    "FlutterDev",
-    R.drawable.profile_image,
-    "https://pbs.twimg.com/profile_banners/420730316/1578350457/1500x500",
-    "Google’s UI toolkit to build apps for mobile, web, & desktop from a single codebase //",
-    35,
-    88675,
-    true
+    name = "Ahmed Rizwan",
+    username = "sudo_rizwan",
+    avatar = R.drawable.profile_image,
+    banner = "https://pbs.twimg.com/profile_banners/968284418/1578616922/1500x500",
+    bio = "Android Engineer @Snappymob",
+    following = 248,
+    followers = 343,
+    verified = false
 )
 
 // Tweets
 val tweets = listOf(
-    Tweet(
-        flutterDev,
-        """
-        #FlutterFriday\nis\nhere.\n\nRight pointing backhand indexYou can specify whether your Flutter 
-        project uses Swift, Objective C, Kotlin, or Java by specifying:\n\n"--ios-language objc" or "--android-langu
-        age java" when you type "flutter create".\n\nElectric light bulbBy default new projects use Kotlin and 
-        Swift. 
-        """.trimIndent(),
-        null,
-        15,
-        false,
-        38,
-        false,
-        244,
-        "1d"
-    ),
     Tweet(
         sudorizwan,
         "This is a test twt to see how all this works, yay!",
@@ -56,20 +29,15 @@ val tweets = listOf(
         "2d"
     ),
     Tweet(
-        flutterDev,
-        """
-        #FlutterFriday\nis\nhere.\n\nRight pointing backhand indexYou can specify whether your Flutter 
-        project uses Swift, Objective C, Kotlin, or Java by specifying:\n\n"--ios-language objc" or "--android-langu
-        age java" when you type "flutter create".\n\nElectric light bulbBy default new projects use Kotlin and 
-        Swift. 
-        """.trimIndent(),
+        sudorizwan,
+        "This is a test twt to see how all this works, yay!",
         null,
-        15,
+        495,
         false,
-        38,
+        193,
         false,
-        244,
-        "1d"
+        2,
+        "2d"
     ),
     Tweet(
         sudorizwan,
@@ -83,20 +51,15 @@ val tweets = listOf(
         "2d"
     ),
     Tweet(
-        flutterDev,
-        """
-        #FlutterFriday\nis\nhere.\n\nRight pointing backhand indexYou can specify whether your Flutter 
-        project uses Swift, Objective C, Kotlin, or Java by specifying:\n\n"--ios-language objc" or "--android-langu
-        age java" when you type "flutter create".\n\nElectric light bulbBy default new projects use Kotlin and 
-        Swift. 
-        """.trimIndent(),
+        sudorizwan,
+        "This is a test twt to see how all this works, yay!",
         null,
-        15,
+        495,
         false,
-        38,
+        193,
         false,
-        244,
-        "1d"
+        2,
+        "2d"
     ),
     Tweet(
         sudorizwan,

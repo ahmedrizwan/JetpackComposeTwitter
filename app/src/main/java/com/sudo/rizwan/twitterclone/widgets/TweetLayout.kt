@@ -38,7 +38,7 @@ fun TweetLayout(tweet: Tweet) {
         Spacer(modifier = Modifier.preferredSize(12.dp))
         Column {
             Row(verticalGravity = Alignment.CenterVertically) {
-                Text(
+                ThemedText(
                     text = tweet.user.name,
                     style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp)
                 )
@@ -46,7 +46,7 @@ fun TweetLayout(tweet: Tweet) {
                 GrayText(text = "@${tweet.user.username} · ${tweet.timestamp}")
             }
             Spacer(modifier = Modifier.preferredSize(1.dp))
-            Text(
+            ThemedText(
                 text = tweet.tweet,
                 style = TextStyle(fontSize = 14.sp)
             )

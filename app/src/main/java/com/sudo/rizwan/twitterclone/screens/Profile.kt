@@ -1,15 +1,8 @@
 package com.sudo.rizwan.twitterclone.screens
 
 import androidx.compose.Composable
-import androidx.ui.core.ContentScale
-import androidx.ui.core.Modifier
-import androidx.ui.core.clip
-import androidx.ui.core.tag
-import androidx.ui.foundation.Border
-import androidx.ui.foundation.Image
-import androidx.ui.foundation.VerticalScroller
-import androidx.ui.foundation.drawBorder
-import androidx.ui.foundation.shape.corner.CircleShape
+import androidx.ui.core.*
+import androidx.ui.foundation.*
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
@@ -17,13 +10,15 @@ import androidx.ui.res.imageResource
 import androidx.ui.unit.dp
 import com.sudo.rizwan.twitterclone.R
 import com.sudo.rizwan.twitterclone.models.User
+import com.sudo.rizwan.twitterclone.state.AppState
 import com.sudo.rizwan.twitterclone.tweets
 import com.sudo.rizwan.twitterclone.widgets.CustomDivider
 import com.sudo.rizwan.twitterclone.widgets.TweetLayout
 
 @Composable
 fun Profile(user: User) {
-    VerticalScroller {
+    val scrollerPosition = ScrollerPosition()
+    VerticalScroller(scrollerPosition = scrollerPosition) {
         ConstraintLayout(constraintSet = ConstraintSet {
             val banner = tag("banner")
             val avatar = tag("avatar")
@@ -34,6 +29,22 @@ fun Profile(user: User) {
             avatar.left.margin = 16.dp
             content.top constrainTo banner.bottom
         }) {
+            Row(
+                modifier = Modifier.preferredHeight(54.dp).fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalGravity = Alignment.CenterVertically
+            ) {
+                Image(
+                    imageResource(R.drawable.ic_dm),
+                    modifier = Modifier
+                        .preferredHeight(30.dp)
+                )
+                Image(
+                    imageResource(R.drawable.ic_notifications),
+                    modifier = Modifier
+                        .preferredHeight(30.dp)
+                )
+            }
             Image(
                 imageResource(R.drawable.profile_banner),
                 modifier = Modifier
@@ -48,7 +59,10 @@ fun Profile(user: User) {
                     .preferredSize(80.dp)
                     .clip(shape = RoundedCornerShape(40.dp))
                     .tag("avatar")
-                    .drawBorder(border = Border(size = 3.dp, color = Color.White), shape = RoundedCornerShape(40.dp)),
+                    .drawBorder(
+                        border = Border(size = 3.dp, color = AppState.theme.surface),
+                        shape = RoundedCornerShape(40.dp)
+                    ),
                 contentScale = ContentScale.Crop
             )
             Column(modifier = Modifier.tag("content")) {

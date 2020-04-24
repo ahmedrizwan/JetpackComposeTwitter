@@ -18,3 +18,7 @@ object AppState {
 fun navigateTo(destination: Screen) {
     AppState.currentScreen = destination
 }
+
+fun isLightTheme(): Boolean {
+    return AppState.theme.isLight
+}

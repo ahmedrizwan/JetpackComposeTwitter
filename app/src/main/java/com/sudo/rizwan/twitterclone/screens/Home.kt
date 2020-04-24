@@ -8,10 +8,8 @@ import androidx.ui.core.Modifier
 import androidx.ui.core.clip
 import androidx.ui.foundation.Clickable
 import androidx.ui.foundation.Image
-import androidx.ui.foundation.Text
 import androidx.ui.foundation.VerticalScroller
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Color
 import androidx.ui.layout.*
 import androidx.ui.material.*
 import androidx.ui.res.imageResource
@@ -26,6 +24,7 @@ import com.sudo.rizwan.twitterclone.state.AppState
 import com.sudo.rizwan.twitterclone.sudorizwan
 import com.sudo.rizwan.twitterclone.tweets
 import com.sudo.rizwan.twitterclone.widgets.CustomDivider
+import com.sudo.rizwan.twitterclone.widgets.ThemedText
 import com.sudo.rizwan.twitterclone.widgets.TweetLayout
 
 @Composable
@@ -58,7 +57,7 @@ fun Home(scaffoldState: ScaffoldState = remember { ScaffoldState() }) {
             }
         },
         bottomAppBar = {
-            BottomAppBar(backgroundColor = Color.White) {
+            BottomAppBar(backgroundColor = AppState.theme.surface) {
                 Row(
                     modifier = Modifier.weight(1f),
                     horizontalArrangement = Arrangement.SpaceAround
@@ -85,85 +84,87 @@ private fun BottomBarIcon(icon: Int) {
 
 @Composable
 fun AppDrawer() {
-    Column {
-        Column(modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp)) {
-            Image(
-                imageResource(R.drawable.profile_image),
-                modifier = Modifier
-                    .preferredSize(50.dp)
-                    .clip(shape = RoundedCornerShape(25.dp)),
-                contentScale = ContentScale.Crop
-            )
-            Spacer(modifier = Modifier.preferredHeight(2.dp))
-            UserInfo(sudorizwan)
-            Spacer(modifier = Modifier.preferredHeight(16.dp))
-        }
-        CustomDivider()
-        Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
-            SideBarListItem(text = "Lists", icon = R.drawable.ic_lists)
-            SideBarListItem(text = "Topics", icon = R.drawable.ic_topics)
-            SideBarListItem(text = "Bookmarks", icon = R.drawable.ic_bookmarks)
-            SideBarListItem(text = "Moments", icon = R.drawable.ic_moments)
-        }
-        CustomDivider()
-        Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Settings and privacy", style = TextStyle(fontSize = 18.sp))
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "Help Center", style = TextStyle(fontSize = 18.sp))
-        }
-        Spacer(modifier = Modifier.weight(weight = 1f))
-        CustomDivider()
-        Row(
-            modifier = Modifier.fillMaxWidth()
-                .padding(start = 16.dp, end = 16.dp)
-                .preferredHeight(40.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalGravity = Alignment.CenterVertically
-        ) {
-            Clickable(onClick = {
-                AppState.theme = darkThemeColors
-            }) {
+    Surface(color = AppState.theme.surface) {
+        Column {
+            Column(modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp)) {
                 Image(
-                    imageResource(R.drawable.ic_theme),
+                    imageResource(R.drawable.profile_image),
+                    modifier = Modifier
+                        .preferredSize(50.dp)
+                        .clip(shape = RoundedCornerShape(25.dp)),
+                    contentScale = ContentScale.Crop
+                )
+                Spacer(modifier = Modifier.preferredHeight(2.dp))
+                UserInfo(sudorizwan)
+                Spacer(modifier = Modifier.preferredHeight(16.dp))
+            }
+            CustomDivider()
+            Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
+                SideBarListItem(text = "Lists", icon = R.drawable.ic_lists)
+                SideBarListItem(text = "Topics", icon = R.drawable.ic_topics)
+                SideBarListItem(text = "Bookmarks", icon = R.drawable.ic_bookmarks)
+                SideBarListItem(text = "Moments", icon = R.drawable.ic_moments)
+            }
+            CustomDivider()
+            Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
+                Spacer(modifier = Modifier.height(16.dp))
+                ThemedText(text = "Settings and privacy", style = TextStyle(fontSize = 18.sp))
+                Spacer(modifier = Modifier.height(16.dp))
+                ThemedText(text = "Help Center", style = TextStyle(fontSize = 18.sp))
+            }
+            Spacer(modifier = Modifier.weight(weight = 1f))
+            CustomDivider()
+            Row(
+                modifier = Modifier.fillMaxWidth()
+                    .padding(start = 16.dp, end = 16.dp)
+                    .preferredHeight(40.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalGravity = Alignment.CenterVertically
+            ) {
+                Clickable(onClick = {
+                    AppState.theme = darkThemeColors
+                }) {
+                    Image(
+                        imageResource(R.drawable.ic_theme),
+                        modifier = Modifier.preferredSize(30.dp)
+                    )
+                }
+                Image(
+                    imageResource(R.drawable.ic_qrcode),
                     modifier = Modifier.preferredSize(30.dp)
                 )
             }
-            Image(
-                imageResource(R.drawable.ic_qrcode),
-                modifier = Modifier.preferredSize(30.dp)
-            )
         }
     }
 }
 
 @Composable
 fun UserInfo(user: User, showBio: Boolean = false) {
-    Text(
+    ThemedText(
         text = user.name,
         style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 18.sp)
     )
-    Text(text = "@${user.username}", color = Color(0xFF666666))
+    ThemedText(text = "@${user.username}")
     if (showBio) {
         Spacer(modifier = Modifier.preferredHeight(8.dp))
-        Text(text = user.bio, style = TextStyle(fontSize = 14.sp))
+        ThemedText(text = user.bio, style = TextStyle(fontSize = 14.sp))
     }
     Spacer(modifier = Modifier.preferredHeight(8.dp))
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalGravity = Alignment.CenterVertically
     ) {
-        Text(
+        ThemedText(
             text = "${user.following} ",
             style = TextStyle(fontWeight = FontWeight.Bold)
         )
-        Text(text = "Following", style = TextStyle(fontSize = 14.sp))
+        ThemedText(text = "Following", style = TextStyle(fontSize = 14.sp))
         Spacer(modifier = Modifier.preferredWidth(24.dp))
-        Text(
+        ThemedText(
             text = "${user.followers} ",
             style = TextStyle(fontWeight = FontWeight.Bold)
         )
-        Text(text = "Followers", style = TextStyle(fontSize = 14.sp))
+        ThemedText(text = "Followers", style = TextStyle(fontSize = 14.sp))
     }
 }
 
@@ -175,17 +176,17 @@ fun SideBarListItem(text: String, icon: Int) {
             modifier = Modifier.preferredSize(40.dp)
         )
         Spacer(modifier = Modifier.preferredWidth(16.dp))
-        Text(text = text, style = TextStyle(fontSize = 18.sp))
+        ThemedText(text = text, style = TextStyle(fontSize = 18.sp))
     }
 }
 
 @Composable
 fun TopBar(scaffoldState: ScaffoldState) {
-    Surface(elevation = 2.dp) {
+    Surface(elevation = 2.dp, color = AppState.theme.surface) {
         Row(
             modifier = Modifier.preferredHeight(50.dp)
-                    + Modifier.padding(start = 16.dp, end = 16.dp)
-                    + Modifier.fillMaxWidth(),
+                .padding(start = 16.dp, end = 16.dp)
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalGravity = Alignment.CenterVertically
         ) {

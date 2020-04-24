@@ -1,26 +1,29 @@
 package com.sudo.rizwan.twitterclone
 
 import androidx.ui.graphics.Color
+import androidx.ui.material.darkColorPalette
 import androidx.ui.material.lightColorPalette
 
+private val lightBackgroundColor = Color.White
+private val darkBackgroundColor = Color(0xFF15202b)
+private val darkerBackgroundColor = Color.Black
+private val primaryColor = Color(0xFF08a0e9)
+
 val lightThemeColors = lightColorPalette(
-    primary = Color(0xFF08a0e9),
-    onPrimary = Color.White,
-    secondary = Color.White,
-    onSecondary = Color.Black,
-    background = Color.White,
-    onBackground = Color.Black,
-    surface = Color.White,
-    onSurface = Color.Black
+    primary = primaryColor,
+    background = lightBackgroundColor,
+    surface = lightBackgroundColor
 )
 
-val darkThemeColors = lightColorPalette(
-    primary = Color(0xFF08a0e9),
-    onPrimary = Color.Black,
-    secondary = Color.Black,
-    onSecondary = Color.Black,
-    background = Color.Black,
-    onBackground = Color.White,
-    surface = Color.Black,
-    onSurface = Color.White
+
+val darkThemeColors = darkColorPalette(
+    primary = primaryColor,
+    background = darkBackgroundColor,
+    surface = darkBackgroundColor
+)
+
+val darkerThemeColors = darkColorPalette(
+    primary = primaryColor,
+    background = darkerBackgroundColor,
+    surface = darkerBackgroundColor
 )
