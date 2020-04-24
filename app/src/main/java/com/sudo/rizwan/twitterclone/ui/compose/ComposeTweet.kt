@@ -23,6 +23,7 @@ import androidx.ui.unit.sp
 import com.sudo.rizwan.twitterclone.R
 import com.sudo.rizwan.twitterclone.state.AppState
 import com.sudo.rizwan.twitterclone.state.Screen
+import com.sudo.rizwan.twitterclone.state.createNewTweet
 import com.sudo.rizwan.twitterclone.state.navigateTo
 
 @Composable
@@ -43,7 +44,8 @@ fun ComposeTweet() {
             }
             Button(
                 onClick = {
-                    //TODO: Create and add tweet
+                    createNewTweet(tweetText.value.text)
+                    navigateTo(Screen.Home)
                 },
                 shape = RoundedCornerShape(20.dp),
                 backgroundColor = if (tweetText.value.text.isEmpty()) Color(0xFFAAAAAA) else AppState.theme.primary

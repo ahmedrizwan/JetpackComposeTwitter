@@ -3,6 +3,7 @@ package com.sudo.rizwan.twitterclone.state
 import com.sudo.rizwan.twitterclone.R
 import com.sudo.rizwan.twitterclone.models.Tweet
 import com.sudo.rizwan.twitterclone.models.User
+import java.util.*
 
 // Users
 val sudorizwan = User(
@@ -17,7 +18,7 @@ val sudorizwan = User(
 )
 
 // Tweets
-val tweets = listOf(
+val tweets = mutableListOf(
     Tweet(
         sudorizwan,
         "This is a test twt to see how all this works, yay!",
@@ -27,7 +28,7 @@ val tweets = listOf(
         193,
         false,
         2,
-        "2d"
+        1587345183868
     ),
     Tweet(
         sudorizwan,
@@ -38,7 +39,7 @@ val tweets = listOf(
         193,
         true,
         2,
-        "2d"
+        1585852320000
     ),
     Tweet(
         sudorizwan,
@@ -49,7 +50,7 @@ val tweets = listOf(
         193,
         false,
         2,
-        "2d"
+        1585751520000
     ),
     Tweet(
         sudorizwan,
@@ -60,7 +61,7 @@ val tweets = listOf(
         193,
         false,
         2,
-        "2d"
+        1585427520000
     ),
     Tweet(
         sudorizwan,
@@ -71,6 +72,23 @@ val tweets = listOf(
         193,
         false,
         2,
-        "2d"
+        1585427520000
     )
 )
+
+fun createNewTweet(text: String) {
+    tweets.add(
+        0,
+        Tweet(
+            user = sudorizwan,
+            tweet = text,
+            likes = 0,
+            liked = false,
+            retweeted = false,
+            retweets = 0,
+            image = null,
+            comments = 0,
+            timestamp = Date().time
+        )
+    )
+}
