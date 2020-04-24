@@ -2,14 +2,17 @@ package com.sudo.rizwan.twitterclone.screens
 
 import androidx.compose.Composable
 import androidx.compose.remember
+import androidx.compose.state
 import androidx.ui.core.Alignment
 import androidx.ui.core.ContentScale
 import androidx.ui.core.Modifier
 import androidx.ui.core.clip
 import androidx.ui.foundation.Clickable
+import androidx.ui.foundation.Dialog
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.VerticalScroller
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
+import androidx.ui.graphics.Color
 import androidx.ui.layout.*
 import androidx.ui.material.*
 import androidx.ui.res.imageResource
@@ -17,12 +20,10 @@ import androidx.ui.text.TextStyle
 import androidx.ui.text.font.FontWeight
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
+import com.sudo.rizwan.twitterclone.*
 import com.sudo.rizwan.twitterclone.R
-import com.sudo.rizwan.twitterclone.darkThemeColors
 import com.sudo.rizwan.twitterclone.models.User
 import com.sudo.rizwan.twitterclone.state.AppState
-import com.sudo.rizwan.twitterclone.sudorizwan
-import com.sudo.rizwan.twitterclone.tweets
 import com.sudo.rizwan.twitterclone.widgets.CustomDivider
 import com.sudo.rizwan.twitterclone.widgets.ThemedText
 import com.sudo.rizwan.twitterclone.widgets.TweetLayout
@@ -84,6 +85,7 @@ private fun BottomBarIcon(icon: Int) {
 
 @Composable
 fun AppDrawer() {
+    val showThemeDialog = state { false }
     Surface(color = AppState.theme.surface) {
         Column {
             Column(modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp)) {
@@ -121,9 +123,7 @@ fun AppDrawer() {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalGravity = Alignment.CenterVertically
             ) {
-                Clickable(onClick = {
-                    AppState.theme = darkThemeColors
-                }) {
+                Clickable(onClick = { showThemeDialog.value = true }) {
                     Image(
                         imageResource(R.drawable.ic_theme),
                         modifier = Modifier.preferredSize(30.dp)
@@ -134,6 +134,47 @@ fun AppDrawer() {
                     modifier = Modifier.preferredSize(30.dp)
                 )
             }
+        }
+        if (showThemeDialog.value) {
+            Dialog(onCloseRequest = { showThemeDialog.value = false }) {
+                Surface(
+                    modifier = Modifier.preferredWidth(300.dp),
+                    shape = RoundedCornerShape(10.dp),
+                    color = AppState.theme.surface
+                ) {
+                    Column(modifier = Modifier.padding(24.dp)) {
+                        ThemedText(text = "Pick a theme", style = TextStyle(fontSize = 22.sp))
+                        Spacer(modifier = Modifier.preferredHeight(16.dp))
+                        ThemeOption("Light", AppState.theme == lightThemeColors) {
+                            AppState.theme = lightThemeColors
+                        }
+                        ThemeOption("Dark", AppState.theme == darkThemeColors) {
+                            AppState.theme = darkThemeColors
+                        }
+                        ThemeOption("Darker", AppState.theme == darkerThemeColors) {
+                            AppState.theme = darkerThemeColors
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ThemeOption(text: String, selected: Boolean, onSelect: () -> Unit) {
+    Button(onClick = onSelect, backgroundColor = Color.Transparent, elevation = 0.dp) {
+        Row(
+            modifier = Modifier.preferredHeight(34.dp).fillMaxWidth(),
+            verticalGravity = Alignment.CenterVertically
+        ) {
+            RadioButton(
+                selected = selected,
+                onSelect = onSelect,
+                color = AppState.theme.primary
+            )
+            Spacer(modifier = Modifier.preferredWidth(16.dp))
+            ThemedText(text = text)
         }
     }
 }

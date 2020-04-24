@@ -6,7 +6,7 @@ import androidx.ui.material.lightColorPalette
 
 private val lightBackgroundColor = Color.White
 private val darkBackgroundColor = Color(0xFF15202b)
-private val darkerBackgroundColor = Color.Black
+private val darkerBackgroundColor = Color(0xFF0a0a0a)
 private val primaryColor = Color(0xFF08a0e9)
 
 val lightThemeColors = lightColorPalette(
