@@ -77,7 +77,7 @@ fun TweetLayout(tweet: Tweet) {
 
                 Row {
                     Image(
-                        imageResource(R.drawable.ic_retweet),
+                        imageResource(if (tweet.retweeted) R.drawable.ic_retweeted else R.drawable.ic_retweet),
                         modifier = Modifier.preferredSize(imageSize)
                     )
                     Spacer(modifier = Modifier.preferredSize(4.dp))
@@ -87,7 +87,7 @@ fun TweetLayout(tweet: Tweet) {
 
                 Row {
                     Image(
-                        imageResource(R.drawable.ic_like),
+                        imageResource(if (tweet.liked) R.drawable.ic_liked else R.drawable.ic_like),
                         modifier = Modifier.preferredSize(imageSize)
                     )
                     Spacer(modifier = Modifier.preferredSize(4.dp))
@@ -101,12 +101,4 @@ fun TweetLayout(tweet: Tweet) {
             }
         }
     }
-}
-
-@Composable
-private fun GrayText(text: String) {
-    Text(
-        text = text,
-        style = TextStyle(fontSize = 14.sp, color = Color(0xFF666666))
-    )
 }

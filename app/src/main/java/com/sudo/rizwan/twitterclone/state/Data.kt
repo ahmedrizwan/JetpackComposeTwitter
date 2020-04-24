@@ -36,7 +36,7 @@ val tweets = listOf(
         495,
         false,
         193,
-        false,
+        true,
         2,
         "2d"
     ),
@@ -45,7 +45,7 @@ val tweets = listOf(
         "This is a test twt to see how all this works, yay!",
         null,
         495,
-        false,
+        true,
         193,
         false,
         2,
