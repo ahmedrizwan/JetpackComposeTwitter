@@ -4,16 +4,23 @@ import androidx.compose.Composable
 import androidx.ui.core.*
 import androidx.ui.foundation.*
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
+import androidx.ui.graphics.Color
 import androidx.ui.layout.*
+import androidx.ui.material.IconButton
+import androidx.ui.material.icons.Icons
+import androidx.ui.material.icons.filled.ArrowBack
+import androidx.ui.material.icons.filled.MoreVert
 import androidx.ui.res.imageResource
 import androidx.ui.unit.dp
 import com.sudo.rizwan.twitterclone.R
-import com.sudo.rizwan.twitterclone.ui.common.UserInfo
 import com.sudo.rizwan.twitterclone.models.User
 import com.sudo.rizwan.twitterclone.state.AppState
+import com.sudo.rizwan.twitterclone.state.Screen
+import com.sudo.rizwan.twitterclone.state.navigateTo
 import com.sudo.rizwan.twitterclone.state.tweets
 import com.sudo.rizwan.twitterclone.ui.common.CustomDivider
 import com.sudo.rizwan.twitterclone.ui.common.TweetLayout
+import com.sudo.rizwan.twitterclone.ui.common.UserInfo
 
 @Composable
 fun Profile(user: User) {
@@ -21,12 +28,18 @@ fun Profile(user: User) {
     VerticalScroller(scrollerPosition = scrollerPosition) {
         ConstraintLayout(constraintSet = ConstraintSet {
             val banner = tag("banner")
+            val closeButton = tag("close")
+            val moreButton = tag("more")
             val avatar = tag("avatar")
             val content = tag("content")
             avatar.top constrainTo banner.bottom
             avatar.bottom constrainTo banner.bottom
             avatar.left constrainTo parent.left
             avatar.left.margin = 16.dp
+            closeButton.top constrainTo parent.top
+            closeButton.left constrainTo parent.left
+            moreButton.top constrainTo parent.top
+            moreButton.right constrainTo parent.right
             content.top constrainTo banner.bottom
         }) {
             Row(
@@ -53,6 +66,20 @@ fun Profile(user: User) {
                     .tag("banner"),
                 contentScale = ContentScale.Crop
             )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                IconButton(
+                    modifier = Modifier.tag("close"),
+                    onClick = { navigateTo(Screen.Home) }) {
+                    Icon(asset = Icons.Filled.ArrowBack, tint = Color.White)
+                }
+
+                IconButton(modifier = Modifier.tag("more"), onClick = {}) {
+                    Icon(asset = Icons.Filled.MoreVert, tint = Color.White)
+                }
+            }
             Image(
                 imageResource(user.avatar),
                 modifier = Modifier
