@@ -9,11 +9,13 @@ import androidx.ui.res.imageResource
 import androidx.ui.unit.dp
 import com.sudo.rizwan.twitterclone.R
 import com.sudo.rizwan.twitterclone.state.AppState
+import com.sudo.rizwan.twitterclone.state.Screen
+import com.sudo.rizwan.twitterclone.state.navigateTo
 
 @Composable
 fun Fab() {
     FloatingActionButton(
-        onClick = {},
+        onClick = { navigateTo(Screen.Compose) },
         backgroundColor = AppState.theme.primary
     ) {
         Image(

@@ -11,6 +11,7 @@ import com.sudo.rizwan.twitterclone.ui.home.Home
 import com.sudo.rizwan.twitterclone.ui.profile.Profile
 import com.sudo.rizwan.twitterclone.state.AppState
 import com.sudo.rizwan.twitterclone.state.Screen
+import com.sudo.rizwan.twitterclone.ui.compose.ComposeTweet
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +42,7 @@ fun AppContent() {
                 is Screen.Profile -> Profile(
                     screen.user
                 )
+                is Screen.Compose -> ComposeTweet()
             }
         }
     }

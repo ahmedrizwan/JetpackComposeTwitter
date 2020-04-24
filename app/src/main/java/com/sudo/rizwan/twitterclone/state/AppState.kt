@@ -7,6 +7,7 @@ import com.sudo.rizwan.twitterclone.models.User
 sealed class Screen {
     object Home : Screen()
     data class Profile(val user: User) : Screen()
+    object Compose : Screen()
 }
 
 @Model
