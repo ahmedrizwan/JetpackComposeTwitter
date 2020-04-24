@@ -20,7 +20,7 @@ fun BottomBar() {
             modifier = Modifier.weight(1f),
             horizontalArrangement = Arrangement.SpaceAround
         ) {
-            BottomBarIcon(R.drawable.ic_home)
+            BottomBarIcon(R.drawable.ic_home_selected)
             BottomBarIcon(R.drawable.ic_search)
             BottomBarIcon(R.drawable.ic_notifications)
             BottomBarIcon(R.drawable.ic_dm)
