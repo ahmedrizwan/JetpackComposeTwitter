@@ -1,4 +1,4 @@
-package com.sudo.rizwan.twitterclone.widgets
+package com.sudo.rizwan.twitterclone.ui.common
 
 import androidx.compose.Composable
 import androidx.ui.foundation.Text

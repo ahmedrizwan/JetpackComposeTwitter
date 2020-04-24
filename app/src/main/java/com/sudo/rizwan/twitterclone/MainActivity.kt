@@ -7,8 +7,8 @@ import androidx.ui.animation.Crossfade
 import androidx.ui.core.setContent
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Surface
-import com.sudo.rizwan.twitterclone.screens.Home
-import com.sudo.rizwan.twitterclone.screens.Profile
+import com.sudo.rizwan.twitterclone.ui.home.Home
+import com.sudo.rizwan.twitterclone.ui.profile.Profile
 import com.sudo.rizwan.twitterclone.state.AppState
 import com.sudo.rizwan.twitterclone.state.Screen
 
@@ -38,7 +38,9 @@ fun AppContent() {
         Surface(color = MaterialTheme.colors.background) {
             when (screen) {
                 is Screen.Home -> Home()
-                is Screen.Profile -> Profile(screen.user)
+                is Screen.Profile -> Profile(
+                    screen.user
+                )
             }
         }
     }

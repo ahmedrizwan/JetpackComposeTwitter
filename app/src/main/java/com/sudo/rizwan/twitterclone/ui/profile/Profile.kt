@@ -1,19 +1,19 @@
-package com.sudo.rizwan.twitterclone.screens
+package com.sudo.rizwan.twitterclone.ui.profile
 
 import androidx.compose.Composable
 import androidx.ui.core.*
 import androidx.ui.foundation.*
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Color
 import androidx.ui.layout.*
 import androidx.ui.res.imageResource
 import androidx.ui.unit.dp
 import com.sudo.rizwan.twitterclone.R
+import com.sudo.rizwan.twitterclone.ui.common.UserInfo
 import com.sudo.rizwan.twitterclone.models.User
 import com.sudo.rizwan.twitterclone.state.AppState
-import com.sudo.rizwan.twitterclone.tweets
-import com.sudo.rizwan.twitterclone.widgets.CustomDivider
-import com.sudo.rizwan.twitterclone.widgets.TweetLayout
+import com.sudo.rizwan.twitterclone.state.tweets
+import com.sudo.rizwan.twitterclone.ui.common.CustomDivider
+import com.sudo.rizwan.twitterclone.ui.common.TweetLayout
 
 @Composable
 fun Profile(user: User) {
@@ -68,7 +68,10 @@ fun Profile(user: User) {
             Column(modifier = Modifier.tag("content")) {
                 Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
                     Spacer(modifier = Modifier.preferredHeight(44.dp))
-                    UserInfo(user = user, showBio = true)
+                    UserInfo(
+                        user = user,
+                        showBio = true
+                    )
                     Spacer(modifier = Modifier.preferredHeight(16.dp))
                 }
                 CustomDivider()

@@ -1,5 +1,6 @@
-package com.sudo.rizwan.twitterclone
+package com.sudo.rizwan.twitterclone.state
 
+import com.sudo.rizwan.twitterclone.R
 import com.sudo.rizwan.twitterclone.models.Tweet
 import com.sudo.rizwan.twitterclone.models.User
 
