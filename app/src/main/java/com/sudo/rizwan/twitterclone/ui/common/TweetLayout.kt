@@ -7,10 +7,9 @@ import androidx.ui.core.Modifier
 import androidx.ui.core.clip
 import androidx.ui.foundation.Clickable
 import androidx.ui.foundation.Image
-import androidx.ui.foundation.Text
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Color
 import androidx.ui.layout.*
+import androidx.ui.material.ripple.ripple
 import androidx.ui.res.imageResource
 import androidx.ui.text.TextStyle
 import androidx.ui.text.font.FontWeight
@@ -75,23 +74,30 @@ fun TweetLayout(tweet: Tweet) {
                     GrayText(text = tweet.comments.toString())
                 }
 
-                Row {
-                    Image(
-                        imageResource(if (tweet.retweeted) R.drawable.ic_retweeted else R.drawable.ic_retweet),
-                        modifier = Modifier.preferredSize(imageSize)
-                    )
-                    Spacer(modifier = Modifier.preferredSize(4.dp))
-                    GrayText(text = tweet.retweets.toString())
+                Clickable(
+                    modifier = Modifier.ripple(enabled = true),
+                    onClick = { tweet.retweet() }) {
+                    Row {
+                        Image(
+                            imageResource(if (tweet.retweeted) R.drawable.ic_retweeted else R.drawable.ic_retweet),
+                            modifier = Modifier.preferredSize(imageSize)
+                        )
+                        Spacer(modifier = Modifier.preferredSize(4.dp))
+                        GrayText(text = tweet.retweets.toString())
+                    }
                 }
 
-
-                Row {
-                    Image(
-                        imageResource(if (tweet.liked) R.drawable.ic_liked else R.drawable.ic_like),
-                        modifier = Modifier.preferredSize(imageSize)
-                    )
-                    Spacer(modifier = Modifier.preferredSize(4.dp))
-                    GrayText(text = tweet.likes.toString())
+                Clickable(
+                    modifier = Modifier.ripple(enabled = true),
+                    onClick = { tweet.like() }) {
+                    Row {
+                        Image(
+                            imageResource(if (tweet.liked) R.drawable.ic_liked else R.drawable.ic_like),
+                            modifier = Modifier.preferredSize(imageSize)
+                        )
+                        Spacer(modifier = Modifier.preferredSize(4.dp))
+                        GrayText(text = tweet.likes.toString())
+                    }
                 }
 
                 Image(

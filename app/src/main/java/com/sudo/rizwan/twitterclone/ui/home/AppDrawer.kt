@@ -6,7 +6,6 @@ import androidx.ui.core.Alignment
 import androidx.ui.core.ContentScale
 import androidx.ui.core.Modifier
 import androidx.ui.core.clip
-import androidx.ui.foundation.Clickable
 import androidx.ui.foundation.Dialog
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
@@ -82,21 +81,30 @@ fun AppDrawer() {
             CustomDivider()
             Row(
                 modifier = Modifier.fillMaxWidth()
-                    .padding(start = 16.dp, end = 16.dp)
                     .preferredHeight(40.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalGravity = Alignment.CenterVertically
             ) {
-                Clickable(onClick = { showThemeDialog.value = true }) {
+                Button(
+                    padding = InnerPadding(all = 0.dp),
+                    backgroundColor = Color.Transparent,
+                    elevation = 0.dp,
+                    onClick = { showThemeDialog.value = true }) {
                     Image(
                         imageResource(R.drawable.ic_theme),
                         modifier = Modifier.preferredSize(30.dp)
                     )
                 }
-                Image(
-                    imageResource(R.drawable.ic_qrcode),
-                    modifier = Modifier.preferredSize(30.dp)
-                )
+                Button(
+                    padding = InnerPadding(all = 0.dp),
+                    backgroundColor = Color.Transparent,
+                    elevation = 0.dp,
+                    onClick = {}) {
+                    Image(
+                        imageResource(R.drawable.ic_qrcode),
+                        modifier = Modifier.preferredSize(30.dp)
+                    )
+                }
             }
         }
         if (showThemeDialog.value) {

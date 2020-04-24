@@ -1,13 +1,24 @@
 package com.sudo.rizwan.twitterclone.models
 
+import androidx.compose.Model
+
+@Model
 data class Tweet(
     val user: User,
     val tweet: String,
     val image: Int?,
     val likes: Int,
-    val liked: Boolean,
+    var liked: Boolean,
     val retweets: Int,
-    val retweeted: Boolean,
+    var retweeted: Boolean,
     val comments: Int,
     val timestamp: String
-)
+) {
+    fun like() {
+        this.liked = !this.liked
+    }
+
+    fun retweet() {
+       this.retweeted = !this.retweeted
+    }
+}
