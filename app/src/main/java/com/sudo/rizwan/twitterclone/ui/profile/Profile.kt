@@ -27,8 +27,7 @@ import com.sudo.rizwan.twitterclone.ui.common.UserInfo
 
 @Composable
 fun Profile(user: User) {
-    val scrollerPosition = ScrollerPosition()
-    VerticalScroller(scrollerPosition = scrollerPosition) {
+    VerticalScroller {
         ConstraintLayout(constraintSet = ConstraintSet {
             val banner = tag("banner")
             val closeButton = tag("close")
