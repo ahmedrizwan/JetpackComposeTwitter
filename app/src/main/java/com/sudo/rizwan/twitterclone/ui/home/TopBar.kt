@@ -21,33 +21,19 @@ import com.sudo.rizwan.twitterclone.state.AppState
 fun TopBar(scaffoldState: ScaffoldState) {
     Surface(elevation = 2.dp, color = AppState.theme.surface) {
         Row(
-            modifier = Modifier.preferredHeight(50.dp)
-                .padding(start = 16.dp, end = 16.dp)
-                .fillMaxWidth(),
+            modifier = Modifier.preferredHeight(50.dp).padding(start = 16.dp, end = 16.dp).fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalGravity = Alignment.CenterVertically
         ) {
-            Clickable(onClick = {
-                scaffoldState.drawerState = DrawerState.Opened
-            }) {
+            Clickable(onClick = { scaffoldState.drawerState = DrawerState.Opened }) {
                 Image(
                     imageResource(R.drawable.profile_image),
-                    modifier = Modifier
-                        .preferredSize(34.dp)
-                        .clip(shape = RoundedCornerShape(17.dp)),
+                    modifier = Modifier.preferredSize(34.dp).clip(shape = RoundedCornerShape(17.dp)),
                     contentScale = ContentScale.Crop
                 )
             }
-            Image(
-                imageResource(R.drawable.ic_twitter),
-                modifier = Modifier
-                    .preferredSize(22.dp)
-            )
-            Image(
-                imageResource(R.drawable.ic_trends),
-                modifier = Modifier
-                    .preferredSize(24.dp)
-            )
+            Image(imageResource(R.drawable.ic_twitter), modifier = Modifier.preferredSize(22.dp))
+            Image(imageResource(R.drawable.ic_trends), modifier = Modifier.preferredSize(24.dp))
         }
     }
 }
