@@ -57,15 +57,17 @@ fun TweetLayout(tweet: Tweet) {
                 style = TextStyle(fontSize = 14.sp)
             )
             if (tweet.image != null) {
+                Spacer(modifier = Modifier.preferredHeight(10.dp))
                 Image(
                     imageResource(tweet.image),
                     modifier = Modifier
                         .preferredHeight(180.dp)
                         .fillMaxWidth()
-                        .clip(shape = RoundedCornerShape(10.dp))
+                        .clip(shape = RoundedCornerShape(2.dp)),
+                   contentScale = ContentScale.Crop
                 )
             }
-            Spacer(modifier = Modifier.preferredSize(8.dp))
+            Spacer(modifier = Modifier.preferredSize(10.dp))
             Row(
                 modifier = Modifier.fillMaxWidth() + Modifier.padding(end = 40.dp),
                 verticalGravity = Alignment.CenterVertically,
