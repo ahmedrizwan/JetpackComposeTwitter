@@ -4,6 +4,7 @@ import androidx.compose.Composable
 import androidx.ui.foundation.Text
 import androidx.ui.graphics.Color
 import androidx.ui.text.TextStyle
+import androidx.ui.text.style.TextOverflow
 import androidx.ui.unit.sp
 import com.sudo.rizwan.twitterclone.state.AppState
 
@@ -24,6 +25,8 @@ fun GrayText(text: String) {
         style = TextStyle(
             fontSize = 14.sp,
             color = if (AppState.theme.isLight) Color(0xFF666666) else Color(0xFFDDDDDD)
-        )
+        ),
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis
     )
 }

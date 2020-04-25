@@ -65,7 +65,7 @@ fun Profile(user: User) {
                 )
             }
             Image(
-                imageResource(R.drawable.profile_banner),
+                imageResource(user.banner),
                 modifier = Modifier
                     .preferredHeight(180.dp)
                     .fillMaxWidth()
