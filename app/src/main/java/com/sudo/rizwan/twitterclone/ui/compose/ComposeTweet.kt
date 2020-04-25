@@ -1,6 +1,7 @@
 package com.sudo.rizwan.twitterclone.ui.compose
 
 import androidx.compose.Composable
+import androidx.compose.MutableState
 import androidx.compose.state
 import androidx.ui.core.Alignment
 import androidx.ui.core.ContentScale
@@ -35,48 +36,63 @@ fun ComposeTweet() {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalGravity = Alignment.CenterVertically
         ) {
-            IconButton(onClick = { navigateTo(Screen.Home) }) {
-                Icon(
-                    modifier = Modifier.size(50.dp),
-                    asset = Icons.Filled.Clear,
-                    tint = AppState.theme.primary
-                )
-            }
-            Button(
-                onClick = {
-                    createNewTweet(tweetText.value.text)
-                    navigateTo(Screen.Home)
-                },
-                shape = RoundedCornerShape(20.dp),
-                backgroundColor = if (tweetText.value.text.isEmpty()) Color(0xFFAAAAAA) else AppState.theme.primary
-            ) {
-                Text(text = "Tweet", color = Color.White)
-            }
+            CloseButton()
+            TweetButton(tweetText)
         }
-        Row(
-            modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 10.dp, bottom = 10.dp)
-        ) {
-            Image(
-                imageResource(R.drawable.profile_image),
-                modifier = Modifier
-                    .preferredSize(34.dp)
-                    .clip(shape = RoundedCornerShape(17.dp)),
-                contentScale = ContentScale.Crop
-            )
-            Spacer(modifier = Modifier.preferredWidth(10.dp))
-            TextFieldWithHint(
-                modifier = Modifier.fillMaxWidth(),
-                value = tweetText.value,
-                onValueChange = { textFieldValue -> tweetText.value = textFieldValue },
-                hint = "What's happening?"
-            )
-        }
+        AvatarWithTextField(tweetText)
     }
 
 }
 
 @Composable
-fun TextFieldWithHint(
+private fun AvatarWithTextField(tweetText: MutableState<TextFieldValue>) {
+    Row(
+        modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 10.dp, bottom = 10.dp)
+    ) {
+        Image(
+            imageResource(R.drawable.profile_image),
+            modifier = Modifier
+                .preferredSize(34.dp)
+                .clip(shape = RoundedCornerShape(17.dp)),
+            contentScale = ContentScale.Crop
+        )
+        Spacer(modifier = Modifier.preferredWidth(10.dp))
+        TextFieldWithHint(
+            modifier = Modifier.fillMaxWidth(),
+            value = tweetText.value,
+            onValueChange = { textFieldValue -> tweetText.value = textFieldValue },
+            hint = "What's happening?"
+        )
+    }
+}
+
+@Composable
+private fun CloseButton() {
+    IconButton(onClick = { navigateTo(Screen.Home) }) {
+        Icon(
+            modifier = Modifier.size(50.dp),
+            asset = Icons.Filled.Clear,
+            tint = AppState.theme.primary
+        )
+    }
+}
+
+@Composable
+private fun TweetButton(tweetText: MutableState<TextFieldValue>) {
+    Button(
+        onClick = {
+            createNewTweet(tweetText.value.text)
+            navigateTo(Screen.Home)
+        },
+        shape = RoundedCornerShape(20.dp),
+        backgroundColor = if (tweetText.value.text.isEmpty()) Color(0xFFAAAAAA) else AppState.theme.primary
+    ) {
+        Text(text = "Tweet", color = Color.White)
+    }
+}
+
+@Composable
+private fun TextFieldWithHint(
     value: TextFieldValue,
     modifier: Modifier,
     hint: String,
