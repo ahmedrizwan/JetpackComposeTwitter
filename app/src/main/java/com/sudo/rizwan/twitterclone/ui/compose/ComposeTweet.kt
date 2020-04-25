@@ -41,7 +41,6 @@ fun ComposeTweet() {
         }
         AvatarWithTextField(tweetText)
     }
-
 }
 
 @Composable
