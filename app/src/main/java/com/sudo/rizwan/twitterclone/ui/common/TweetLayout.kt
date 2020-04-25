@@ -41,6 +41,13 @@ fun TweetLayout(tweet: Tweet) {
                     text = tweet.user.name,
                     style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 16.sp)
                 )
+                if (tweet.user.verified) {
+                    Spacer(modifier = Modifier.preferredSize(2.dp))
+                    Image(
+                        imageResource(R.drawable.ic_verified),
+                        modifier = Modifier.preferredSize(16.dp)
+                    )
+                }
                 Spacer(modifier = Modifier.preferredSize(5.dp))
                 GrayText(text = "@${tweet.user.username} · ${tweet.timeAgo()}")
             }
