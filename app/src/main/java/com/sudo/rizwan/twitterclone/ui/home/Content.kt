@@ -18,12 +18,11 @@ fun Content(scaffoldState: ScaffoldState) {
         VerticalScroller {
             Column {
                 tweets.forEach { tweet ->
-                    TweetLayout(
-                        tweet
-                    )
+                    TweetLayout(tweet)
                     CustomDivider()
                 }
             }
         }
     }
 }
+

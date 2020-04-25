@@ -115,27 +115,18 @@ fun AppDrawer() {
                     color = AppState.theme.surface
                 ) {
                     Column(modifier = Modifier.padding(24.dp)) {
-                        ThemedText(
-                            text = "Pick a theme",
-                            style = TextStyle(fontSize = 22.sp)
-                        )
+                        ThemedText(text = "Pick a theme", style = TextStyle(fontSize = 22.sp))
                         Spacer(modifier = Modifier.preferredHeight(16.dp))
-                        ThemeOption(
-                            "Light",
-                            AppState.theme == lightThemeColors
-                        ) {
+                        ThemeOption("Light", AppState.theme == lightThemeColors) {
+                            // on click
                             AppState.theme = lightThemeColors
                         }
-                        ThemeOption(
-                            "Dark",
-                            AppState.theme == darkThemeColors
-                        ) {
+                        ThemeOption("Dark", AppState.theme == darkThemeColors) {
+                            // on click
                             AppState.theme = darkThemeColors
                         }
-                        ThemeOption(
-                            "Darker",
-                            AppState.theme == darkerThemeColors
-                        ) {
+                        ThemeOption("Darker", AppState.theme == darkerThemeColors) {
+                            // on click
                             AppState.theme = darkerThemeColors
                         }
                     }

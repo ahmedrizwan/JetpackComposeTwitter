@@ -15,7 +15,6 @@ val lightThemeColors = lightColorPalette(
     surface = lightBackgroundColor
 )
 
-
 val darkThemeColors = darkColorPalette(
     primary = primaryColor,
     background = darkBackgroundColor,
