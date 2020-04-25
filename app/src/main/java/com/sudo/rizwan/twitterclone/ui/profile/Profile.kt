@@ -6,6 +6,7 @@ import androidx.ui.foundation.*
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
+import androidx.ui.material.Button
 import androidx.ui.material.IconButton
 import androidx.ui.material.icons.Icons
 import androidx.ui.material.icons.filled.ArrowBack
@@ -32,10 +33,15 @@ fun Profile(user: User) {
             val moreButton = tag("more")
             val avatar = tag("avatar")
             val content = tag("content")
+            val followButton = tag("follow")
             avatar.top constrainTo banner.bottom
             avatar.bottom constrainTo banner.bottom
             avatar.left constrainTo parent.left
             avatar.left.margin = 16.dp
+            followButton.top constrainTo banner.bottom
+            followButton.right constrainTo parent.right
+            followButton.right.margin = 16.dp
+            followButton.top.margin = 16.dp
             closeButton.top constrainTo parent.top
             closeButton.left constrainTo parent.left
             moreButton.top constrainTo parent.top
@@ -66,6 +72,16 @@ fun Profile(user: User) {
                     .tag("banner"),
                 contentScale = ContentScale.Crop
             )
+            Button(
+                modifier = Modifier.tag("follow"),
+                onClick = {
+                },
+                shape = RoundedCornerShape(20.dp),
+                backgroundColor = AppState.theme.surface,
+                border = Border(1.dp, AppState.theme.primary)
+            ) {
+                Text(text = "Follow", color = AppState.theme.primary)
+            }
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
