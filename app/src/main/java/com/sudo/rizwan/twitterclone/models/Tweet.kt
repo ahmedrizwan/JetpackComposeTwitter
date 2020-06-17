@@ -25,7 +25,6 @@ data class Tweet(
         this.retweets = if (this.retweeted) this.retweets + 1 else this.retweets - 1
     }
 
-
     fun timeAgo(): String {
         val currentTime = Date().time;
         val timeDiff = currentTime - timestamp;

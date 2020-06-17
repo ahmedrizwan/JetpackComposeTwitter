@@ -10,7 +10,7 @@ fun Home(scaffoldState: ScaffoldState = remember { ScaffoldState() }) {
     Scaffold(
         scaffoldState = scaffoldState,
         drawerContent = { AppDrawer() },
-        bodyContent = { modifier -> Content(scaffoldState = scaffoldState) },
+        bodyContent = { Content(scaffoldState = scaffoldState) },
         floatingActionButton = { Fab() },
         bottomAppBar = { BottomBar() }
     )
